@@ -1,0 +1,38 @@
+NAME			= libft.a
+
+SRCS			=	 
+						
+
+OBJS			=	$(patsubst %.c,%.o,$(SRCS))
+
+# D_FILES			= $(patsubst %.c,%.d,$(SRCS))
+
+OPTFLAGS 		= -O2
+CFLAGS			= -Wall -Wextra -Werror
+HEADER			= test.h -I
+
+$(NAME) :		$(OBJS)
+		ar rcs $(NAME) $(OBJS)
+
+all :			$(NAME)
+
+%.o : %.c 
+	gcc $(CFLAGS) $(OPTFLAGS) -c $< -o $@ $(HEADER)
+
+# include $(wildcard $(D_FILES))
+
+clean :
+		@rm -f $(OBJS) $(D_FILES)
+
+fclean :			clean
+				@rm -f $(NAME)
+
+re :				fclean all
+
+.PHONY :			all clean fclean re bonus
+
+				# ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \ 
+				# ft_isprint.c ft_memcpy.c ft_memset.c ft_putchar_fd.c ft_putendl_fd.c \
+				# ft_putnbr_fd.c ft_putstr_fd.c ft_strdup.c ft_striteri.c ft_strjoin.c \
+				# ft_strlen.c ft_strmapi.c ft_strtrim.c ft_substr.c ft_tolower.c \
+				# ft_toupper.c 
